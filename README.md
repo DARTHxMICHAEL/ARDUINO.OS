@@ -14,8 +14,8 @@ DS18B20.h (THERMOMETER)
 
 Modules used:
 
-Arduino UNO R3 Atmel ATMega328
-shield LCD ARDUINO
-HC-SR04
-RTC I2C 24C32 DS1307 + battery
+Arduino UNO R3 Atmel ATMega328,
+shield LCD ARDUINO,
+HC-SR04,
+RTC I2C 24C32 DS1307 + battery,
 DS18B20 
