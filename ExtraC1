@@ -65,3 +65,78 @@ printf("__________Equations2Calculator__________\n\n");
 		printf("x: %g y: %g \n", x, y);
 	printf("________________________________________\n");
 --------------------------------------------------------------------------
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+void sortowanie(char osoba[20][20], int wiek[10], int n, char argv[])
+{
+	int i, j, tem;
+	char temp[20];
+
+	for(i=0;i<n;i++)
+		for (j = i + 1; j < n; j++)
+		{
+			int comp = strcmp(osoba[i], osoba[j]);
+			if (comp > 0)
+			{
+				//i <- j
+				strcpy(temp, osoba[i]);
+				strcpy(osoba[i], osoba[j]);
+				strcpy(osoba[j], temp);
+				tem = wiek[i];
+				wiek[i] = wiek[j];
+				wiek[j] = tem;
+			}
+			else if (comp == 0)
+			{
+				if (wiek[i] > wiek[j])
+				{
+					//i <- j
+					strcpy(temp, osoba[i]);
+					strcpy(osoba[i], osoba[j]);
+					strcpy(osoba[j], temp);
+					tem = wiek[i];
+					wiek[i] = wiek[j];
+					wiek[j] = tem;
+				}
+			}
+		}
+
+	FILE *fin = fopen(argv, "w");
+
+	int m = 0;
+	while (m < n)
+	{
+		fprintf(fin, "%s wiek: %d \n", osoba[m], wiek[m]);
+		m++;
+	}
+	fclose(fin);
+}
+
+
+int main(int argc, char *argv[])
+{
+	FILE *fin = fopen(argv[1], "r");
+
+	char osoba[20][20];
+	int wiek[10];
+	int n = 0;
+
+	printf("Main dziala. \n");
+
+	while (fscanf(fin, "%s %d", osoba[n], &wiek[n]) != EOF)
+	{
+		printf("%s %d\n", osoba[n], wiek[n]);
+		n++;  //number of people
+	}
+		
+	//close file
+	fclose(fin);
+
+	sortowanie(osoba, wiek, n, "Out.txt"); //argv[2]
+
+	getchar(); getchar();
+	return 0;
+}
