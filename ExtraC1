@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <math.h>
+
+//silnia void
+double Silnia(unsigned a)
+{
+	if (a == 0)
+		return 1;
+
+	return Silnia(a - 1)*a;
+}
+
+//wspolcznnik dwumianowy -> n po k
+double WspDwumianowy(unsigned n, unsigned k)
+{
+	double wynik = (Silnia(n) / (Silnia(k)*Silnia(n - k)));
+	return wynik;
+}
+
+//dwumian Newtona
+double DwumianNewtona(unsigned x, unsigned y, unsigned n)
+{
+	double suma = 0;
+
+	int k;
+	for (k = 0; k <= n; k++)
+	{
+		suma += WspDwumianowy(n, k)*pow(x, n - k)*pow(y, k);
+	}
+	return suma;
+}
+
+
+int main()
+{
+	printf("%g", DwumianNewtona(3,1,2));
+
+
+	getchar();
+	return 0;
+}
