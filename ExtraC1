@@ -39,3 +39,29 @@ int main()
 	getchar();
 	return 0;
 }
+--------------------------------------------------------------------------
+printf("__________Equations2Calculator__________\n\n");
+	float w, wx, wy, x, y;
+	double a[2][2], b[2];
+
+	printf("Write first Equation(ax+by=c): ");
+	scanf("%lf x %lf y= %lf", &a[0][0], &a[0][1], &b[0]);
+	printf("Write second Equation(ax+by=c): ");
+	scanf("%lf x %lf y= %lf", &a[1][0], &a[1][1], &b[1]);
+
+	w = a[0][0] * a[1][1] - a[0][1] * a[1][0];
+	wx = b[0] * a[1][1] - a[0][1] * b[1];
+	wy = a[0][0] * b[1] - b[0] * a[1][0];
+
+	if (w == 0)
+		return;
+
+	x = wx / w;
+	y = wy / w;
+
+	if (w == 0 && wy == 0 & wx == 0)
+		printf("There's infinity solutions. \n");
+	else
+		printf("x: %g y: %g \n", x, y);
+	printf("________________________________________\n");
+--------------------------------------------------------------------------
